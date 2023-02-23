@@ -1,23 +1,30 @@
 /*
  * Title: Environments
- * Description: Export active environtment object.
+ * Description: Export current environtment object.
  * Author: Abdullah Al Sahariar
  * Date: 24/02/2023
  *
  */
 
-// dependencies
-
 // module scaffolding
 const env = {};
 
-// Added staging
+// Adding staging object
 env.staging = {
-  port: 5000,
+  port: 8000,
   name: "staging",
 };
 
+// Adding production object
 env.production = {
-  port: 8000,
+  port: 5000,
   name: "production",
 };
+
+// Checking which environment is active
+const currentEnv = env[process.env.NODE_ENV]
+  ? env[process.env.NODE_ENV]
+  : env.staging;
+
+// Exporting the current environment
+module.exports = currentEnv;

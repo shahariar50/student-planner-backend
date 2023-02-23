@@ -8,14 +8,14 @@
 
 // dependencies
 const http = require("http");
+const env = require("./helpers/environment");
 
 // module scaffolding
 const app = {};
 
 // Configuration
-//TODO: Assign dynamic port
 app.config = {
-  port: 8000,
+  port: env.port,
 };
 
 // Create server function
