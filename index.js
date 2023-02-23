@@ -9,6 +9,7 @@
 // dependencies
 const http = require("http");
 const env = require("./helpers/environment");
+const { handleReqRes } = require("./helpers/reqResHandler");
 
 // module scaffolding
 const app = {};
@@ -20,7 +21,7 @@ app.config = {
 
 // Create server function
 app.createServer = () => {
-  const server = http.createServer(() => {});
+  const server = http.createServer(handleServer);
 
   server.listen(app.config.port, () => {
     console.log(`listening port ${app.config.port}...`);
@@ -29,7 +30,7 @@ app.createServer = () => {
 
 // Handle server
 //TODO: Assign handle server
-const handleServer = 0;
+const handleServer = handleReqRes;
 
 // Calling Server
 app.createServer();
