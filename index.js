@@ -29,7 +29,7 @@ app.createServer = () => {
 };
 
 // Handle server
-//TODO: Assign handle server
+// Assigning handle server
 const handleServer = handleReqRes;
 
 // Calling Server
