@@ -10,9 +10,36 @@
 const http = require("http");
 const env = require("./helpers/environment");
 const { handleReqRes } = require("./helpers/reqResHandler");
+const data = require("./lib/data");
 
 // module scaffolding
 const app = {};
+
+// data.create(
+//   "users",
+//   "newUser",
+//   { name: "Sahariar", phone: "01625781386" },
+//   (err) => {
+//     console.log(err);
+//   }
+// );
+
+// data.update(
+//   "users",
+//   "newUser",
+//   { name: "Touhid", phone: "01625781386" },
+//   (err) => {
+//     console.log(err);
+//   }
+// );
+
+// data.read("users", "newUser", (err) => {
+//   console.log(err);
+// });
+
+data.delete("users", "newUser", (err) => {
+  console.log(err);
+});
 
 // Configuration
 app.config = {
