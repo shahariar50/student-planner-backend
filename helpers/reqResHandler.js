@@ -8,7 +8,8 @@
 // dependencies
 const url = require("url");
 const { StringDecoder } = require("string_decoder");
-const { buffer } = require("stream/consumers");
+const { noutFoundHandler } = require("../handlers/notFoundHandler");
+const routes = require("../routes");
 
 // module scaffolding
 const handle = {};
@@ -40,8 +41,20 @@ handle.handleReqRes = (req, res) => {
   req.on("end", () => {
     decoder.end();
 
+    const currentHandler = routes[trimmedUrl]
+      ? routes[trimmedUrl]
+      : noutFoundHandler;
+
+    currentHandler(requestProperties, (status, payload) => {
+      const newPayload = JSON.stringify(payload);
+
+      res.setHeader("Content-Type", "application/json");
+      res.writeHead(status);
+
+      res.end(newPayload);
+    });
+
     console.log(realData);
-    res.end("Hello World");
   });
 };
 
